@@ -38,7 +38,7 @@
 
     <!-- Card to show tasks -->
 
-    <div class="row mt-5">
+    <div class="row mt-5 mb-5">
       <div v-for="(task, index) in tasks" :key="index" class="col-lg-4 col-md-6 col-sm-12">
         <div class="mt-2 card col-12">
           <div class="card-header flex-column d-flex justify-content-center align-items-center">
@@ -128,6 +128,11 @@ export default {
           Swal.fire('¡Eliminado!', '', 'success')
         } 
       });
+    }
+  },
+  mounted() {
+    if (localStorage.getItem('tasks')) {
+      this.tasks = JSON.parse(localStorage.getItem('tasks'));
     }
   }
 }
